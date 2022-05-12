@@ -3,10 +3,15 @@
     newEntries: {{ newEntries }}
     <table>
       <tr v-for="(fund, index) in defaultFunds" :key="index">
-      
         <td>{{ fund.name }}</td>
         <td>
-          <input v-model="newEntries[index].id" name="entryFund" type="text" />
+          <input 
+          v-model="newEntries[index].id"
+          name="entryFund"
+          type="text"
+          :v-value="fund.id"
+          
+           />
         </td>
         <td>
           <input
@@ -26,18 +31,17 @@ export default {
     return {
       newEntries: [{}, {}],
 
-    defaultFunds: [
-      {
-        id: 100,
-        name: "fund 0",
-      },
-      {
-        id: 101,
-        name: "fund 1",
-      },
-    ]
-    }
-    
+      defaultFunds: [
+        {
+          id: 100,
+          name: "fund 0",
+        },
+        {
+          id: 101,
+          name: "fund 1",
+        },
+      ],
+    };
   },
   methods: {},
 };
