@@ -1,30 +1,47 @@
 <template>
-  <h1>{{ msg }}</h1>
+  <div >
+newEntries: {{ newEntries }}
+<table>
+    <tr v-for="(fund, index) in defaultFunds">
+      <td>{{ fund.name }}</td>
+      <td>
+       <input    v-model="newEntries[index].id"
+                 name="entryFund"
+                 :value="fund.id"
+                
+                 type="text"  />
+      </td>
+      <td>
+       <input  v-model="newEntries[index].amount"
+                 name="entryFund" 
+                 type="text"  />
+      </td>
+    </tr>
+</table>
 
-  <p>
-    <a href="https://vitejs.dev/guide/features.html" target="_blank">Vite Documentation</a> |
-    <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Documentation</a>
-  </p>
+</div>
 
-  <button @click="state.count++">count is: {{ state.count }}</button>
-  <p>
-    Edit
-    <code>components/HelloWorld.vue</code> to test hot module replacement.
-  </p>
 </template>
 
 <script setup>
-import { defineProps, reactive } from 'vue'
-
-defineProps({
-  msg: String
-})
-
-const state = reactive({ count: 0 })
+ export default {
+  data() {
+  
+  defaultFunds: [
+      {
+        id: 100,
+        name: 'fund 0'
+      },
+      {
+        id: 101,
+        name: 'fund 1'
+      }
+  ],
+  newEntries: [{}, {}]
+},
+  methods: {
+  }
+   }
+  
+  
 </script>
-
-<style scoped>
-a {
-  color: #42b983;
-}
-</style>
